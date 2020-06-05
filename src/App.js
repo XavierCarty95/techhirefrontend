@@ -1,6 +1,7 @@
 import  React, { Component} from 'react'
 import {Switch, Route, withRouter} from 'react-router-dom'
 import NavBar from './components/Navbar'
+import Home from './components/Home'
 import {displayAllUsers, setUserInfo ,logOutUser} from './actions/users'
 import {AllJobs} from './actions/jobs'
 import {allCompanies} from './actions/companies'
@@ -150,6 +151,7 @@ renderJob = (routerProps) => {
          <Route path="/talent" render={this.renderTalent}/>
          <Route path="/jobs" render={this.renderJob}/>
          <Route path="/companies" render={this.renderCompany}/>
+         <Route path="/" component={Home}/>
        </Switch>
        
       </div>

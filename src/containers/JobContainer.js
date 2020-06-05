@@ -11,6 +11,7 @@ const JobContainer = (props) =>  {
       })
     return (
         <div>
+            <h1 className = "center-align">Job</h1>
             {arrayOfComponents}
         </div>
     )

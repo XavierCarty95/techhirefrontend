@@ -35,11 +35,11 @@ class Login extends Component {
         
         <div className="field">
         <label htmlFor="password">Password</label>
-        <input style={{width: "500px"}} type = "password" autoComplete="off" name="password" value = {this.state.password} onChange={this.handleInput} />
+        <input style={{width: "500px"}} placeholder = "Password" type = "password" autoComplete="off" name="password" value = {this.state.password} onChange={this.handleInput} />
           
      </div>
      Member's Don't Have An Account ? <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white"}} to="/register">Register</NavLink></button> 
-      <input className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}} type="submit" value="Submit"/>
+      <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px" ,color: "white"}} type="submit" value="Submit"> Submit </button>
     </form>
     </div> 
       )
