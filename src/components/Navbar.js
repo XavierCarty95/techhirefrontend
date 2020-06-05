@@ -12,7 +12,7 @@ const Navbar = (props) => {
     <NavLink to="/">TechHire</NavLink>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         {
-         props.token?  <li onClick={props.logout}><NavLink to="/">Logout, {props.user.email}</NavLink></li> : <li><NavLink to="/login">Sign In</NavLink></li>
+         props.token?  <li onClick={props.logout}><NavLink to="/login">Logout, {props.user.email}</NavLink></li> : <li><NavLink to="/login">Sign In</NavLink></li>
         }
         
         { props.token? <li><NavLink to="/profile">Profile</NavLink></li> : null} 

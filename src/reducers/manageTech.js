@@ -4,9 +4,7 @@ import {combineReducers} from 'redux'
 
 let initialUserState = {
     id: 0,
-    email: "",
     token: "",
-    jobs: []
   }
 
 let userReducer = (state = initialUserState, action) => {
@@ -25,6 +23,8 @@ let userReducer = (state = initialUserState, action) => {
                 ...state, 
                 users: action.payload
             }
+        case "LOGOUT_USER":
+            return { }
 
 
             default: 
@@ -56,14 +56,61 @@ let userReducer = (state = initialUserState, action) => {
     
         }
 
+        let initialJobState = {
+            jobs:[]
+        }
+
+    
+        let jobReducer = (state = initialJobState, action) => {
+ 
+            switch(action.type) {
+               
+                case "DISPLAY_JOBS":
+                    return {
+                        ...state, 
+                        jobs: action.payload
+                    }
+        
+        
+                    default: 
+                    return state
+                }
+        
+        
+            }
+
+            let initialCompaniesState = {
+                companies:[]
+            }
+    
+    
+        let companiesReducer = (state = initialCompaniesState, action) => {
+ 
+                switch(action.type) {
+                   
+                    case "DISPLAY_COMPANIES":
+                        return {
+                            ...state, 
+                            companies: action.payload
+                        }
+            
+            
+                        default: 
+                        return state
+                    }
+            
+            
+         }
+        
+    
     
 
 
 
     const rootReducer = combineReducers({
     
-        // companies: companiesReducer, 
-        // jobs: jobReducer, 
+        companyInformation: companiesReducer, 
+        jobInformation: jobReducer, 
         // applications: applicationReducer,
         userInformation: userReducer,
         talentInformation: talentReducer

@@ -1,10 +1,14 @@
-import  React, { Component, Profiler } from 'react'
+import  React, { Component} from 'react'
 import {Switch, Route, withRouter} from 'react-router-dom'
 import NavBar from './components/Navbar'
-import {displayAllUsers, setUserInfo} from './actions/users'
+import {displayAllUsers, setUserInfo ,logOutUser} from './actions/users'
+import {AllJobs} from './actions/jobs'
+import {allCompanies} from './actions/companies'
 import {connect } from 'react-redux'
 import TalentContainer from './containers/TalentContainer'
 import ProfileContainer from './containers/ProfileContainer'
+import JobContainer from './containers/JobContainer'
+import CompanyContainer from './containers/CompanyContainer'
 import Register from './Forms/Register'
 import Login from  './Forms/Login'
 
@@ -32,6 +36,20 @@ class App extends Component {
    .then(response => {
       this.props.displayAllUsers(response)
    })
+
+   fetch("http://localhost:4000/companies")
+   .then(r => r.json())
+   .then(response => {
+     console.log(response)
+      this.props.allCompanies(response)
+   })
+
+
+   fetch("http://localhost:4000/jobs")
+  .then(r => r.json())
+  .then(response => {
+      this.props.AllJobs(response)
+   })
 }
 handleLoginSubmit = (user) => {
   fetch("http://localhost:4000/users/login", {
@@ -52,13 +70,30 @@ handleLoginSubmit = (user) => {
   })
  }
 
- renderForm = (routerProps) => {
+ handleRegisterSubmit = (userInfo) => {
+  fetch("http://localhost:4000/users", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(userInfo)
+  })
+    .then(r => r.json())
+    .then(response => {
+        localStorage.token = response.token
+        this.props.setUserInfo(response)
+        this.props.history.push("/profile")
+
+    })
+}
+
+renderForm = (routerProps) => {
 
     if(routerProps.location.pathname === "/login"){
        return <Login handleLogin={this.handleLoginSubmit} />
     } else if (routerProps.location.pathname === "/register") {
       return <Register
-        formName="Register Form"
+        
         handleRegister={this.handleRegisterSubmit}
       />
     }
@@ -75,18 +110,48 @@ handleLoginSubmit = (user) => {
     }
  }
 
+ renderTalent = (routerProps) => {
+  if(routerProps.location.pathname === "/talent"){
+    return  <TalentContainer />
+  }
+
+
+
+ }
+ logout = () => {
+    localStorage.clear("token")
+    this.props.logOutUser()
+   
+
+}
+
+renderJob = (routerProps) => {
+  if(routerProps.location.pathname === "/jobs"){
+    return  <JobContainer/>
+  }
+
+ }
+
+ renderCompany = (routerProps) => {
+  if(routerProps.location.pathname === "/companies"){
+    return  <CompanyContainer />
+  }
+
+}
+
   render() {
-    console.log(this.props)
     return (
       <div>
-       <NavBar/>
+       <NavBar logout={this.logout}/>
        <Switch>
          <Route path="/login" render={this.renderForm}/>
          <Route path="/register" render={this.renderForm}/>
          <Route path="/profile" render={this.renderProfile}/>
-         {/* <Route path="/" exact component={Home} /> */}
+         <Route path="/talent" render={this.renderTalent}/>
+         <Route path="/jobs" render={this.renderJob}/>
+         <Route path="/companies" render={this.renderCompany}/>
        </Switch>
-       {/* <TalentContainer /> */}
+       
       </div>
     )
   }
@@ -95,7 +160,10 @@ handleLoginSubmit = (user) => {
 let mapStateToDispatch = {
     
   displayAllUsers: displayAllUsers,
-  setUserInfo: setUserInfo
+  setUserInfo: setUserInfo,
+  logOutUser: logOutUser,
+  AllJobs: AllJobs,
+  allCompanies: allCompanies
 
 }
 

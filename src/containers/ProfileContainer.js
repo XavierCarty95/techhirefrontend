@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
 
-export class ProfileContainer extends Component {
-    render() {
-        return (
-            <div>
-                Hello
-            </div>
-        )
-    }
+
+
+
+ function ProfileContainer(props) {
+     console.log(props)
+   
+    return (
+        <div>
+            <p>{props.profile.email}</p>
+            {props.profile.first_name}
+            {props.profile.last_name}
+            
+        </div>
+    )
 }
 
-export default ProfileContainer
+
+
+let mapStateToProps = (state) => {
+ 
+    return {
+        profile: state.userInformation.user
+    }
+}
+export default connect(mapStateToProps)(ProfileContainer)
