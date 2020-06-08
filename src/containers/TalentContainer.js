@@ -12,7 +12,9 @@ const TalentContainer = (props) =>  {
     return (
         <div>
             <h1 className="center-align"> Talent </h1>
-            {arrayOfComponents}
+            <div class="ui three column grid container">
+                 {arrayOfComponents}
+            </div>
         </div>
     )
 }

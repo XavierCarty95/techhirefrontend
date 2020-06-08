@@ -8,16 +8,28 @@ import {connect} from 'react-redux'
      console.log(props)
    
     return (
-        <div>
-            <p>{props.profile.email}</p>
-            {props.profile.first_name}
-            {props.profile.last_name}
+        <div className = "container center-align">
+        
+        <img src = {props.profile.image} style = {image} alt={props.profile.first_name}/>
+        <h3>Name: {props.profile.first_name} {props.profile.last_name}</h3>
+        <p>Email: {props.profile.email}</p>
+        <p>Role: {props.profile.title} </p>
+        <p>Linkedin: {props.profile.linkedin} </p>
+        <p>Portfolio: {props.profile.portfolio} </p>
+        <p>Github: {props.profile.github} </p>
+        <p>Resume: {props.profile.resume} </p>
+        <p>Skills {props.profile.skills} </p>
             
         </div>
     )
 }
 
 
+const image = {
+   
+   borderRadius: "50%"
+
+}
 
 let mapStateToProps = (state) => {
  

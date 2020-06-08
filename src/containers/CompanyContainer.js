@@ -12,7 +12,9 @@ const CompanyContainer = (props) =>  {
     return (
         <div>
         <h1 className = "center-align">Companies</h1>
+        <div className = "container">
             {arrayOfComponents}
+            </div>
         </div>
     )
 }
