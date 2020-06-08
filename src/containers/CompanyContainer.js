@@ -1,23 +1,34 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React, { Component } from 'react'
+import {connect } from 'react-redux'
 import Company from '../company/Company'
- 
+import {NavLink} from 'react-router-dom'
 
 
-const CompanyContainer = (props) =>  {
-    console.log(props.allTheCompanies)
-    let arrayOfComponents = props.allTheCompanies.map((company) => {
-        return <Company key={company.id} company={company}/>
-      })
-    return (
-        <div>
-        <h1 className = "center-align">Companies</h1>
-        <div className = "container">
-            {arrayOfComponents}
+class CompanyContainer extends Component {
+
+   
+render() {
+        let arrayOfComponents = this.props.companies.map((company) => {
+           return <Company key={company.id} company={company}/>
+               })
+        return (
+            <div>
+            <h1 className = "center-align">Companies</h1>
+            <div className = "container">
+            {arrayOfComponents}     
+            <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white"}} to="/addCompany"> Add Company</NavLink></button>
+             </div>   
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+
+
+
+
+
+
 
 let mapStateToProps = (state) => {
  
@@ -26,6 +37,7 @@ let mapStateToProps = (state) => {
     }
 
 }
+
 
 let functionThatAddsProps = connect(mapStateToProps)
 let componentThatNowHasProps = functionThatAddsProps(CompanyContainer)

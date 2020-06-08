@@ -80,7 +80,8 @@ let userReducer = (state = initialUserState, action) => {
             }
 
             let initialCompaniesState = {
-                companies:[]
+                companies:[],
+                
             }
     
     
@@ -93,6 +94,15 @@ let userReducer = (state = initialUserState, action) => {
                             ...state, 
                             companies: action.payload
                         }
+                    case "ADD_COMPANY":
+                       let companyToAdd = action.payload
+                       let copyOfCompanies = [...state.companies , companyToAdd]
+                        return {
+                            ...state, 
+                            companies: copyOfCompanies
+                        }
+                        
+                 
             
             
                         default: 

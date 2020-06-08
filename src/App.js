@@ -3,9 +3,9 @@ import {Switch, Route, withRouter} from 'react-router-dom'
 import "./App.css"
 import NavBar from './components/Navbar'
 import Home from './components/Home'
-import {displayAllUsers, setUserInfo ,logOutUser} from './actions/users'
+import {displayAllUsers, setUserInfo ,logOutUser } from './actions/users'
 import {AllJobs} from './actions/jobs'
-import {allCompanies} from './actions/companies'
+import {allCompanies , addCompany} from './actions/companies'
 import {connect } from 'react-redux'
 import TalentContainer from './containers/TalentContainer'
 import ProfileContainer from './containers/ProfileContainer'
@@ -13,8 +13,14 @@ import JobContainer from './containers/JobContainer'
 import CompanyContainer from './containers/CompanyContainer'
 import Register from './Forms/Register'
 import Login from  './Forms/Login'
+import CompanyForm from  './Forms/CompanyForm'
+import SearchForm from  './Forms/SearchForm'
 
 class App extends Component {
+  state = {
+     searchTerm: ""
+
+  }
 
   componentDidMount() {
    if(localStorage.token){
@@ -89,6 +95,25 @@ handleLoginSubmit = (user) => {
     })
 }
 
+handleCompany = (companyInfo) => {
+  fetch("http://localhost:4000/companies", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(companyInfo)
+  })
+    .then(r => r.json())
+    .then(response => {
+      if (response.message) {
+        alert(response.message)
+      } else {
+        this.props.addCompany(response)
+        this.props.history.push("/companies")
+      }
+    })
+}
+
 renderForm = (routerProps) => {
 
     if(routerProps.location.pathname === "/login"){
@@ -114,7 +139,7 @@ renderForm = (routerProps) => {
 
  renderTalent = (routerProps) => {
   if(routerProps.location.pathname === "/talent"){
-    return  <TalentContainer />
+    return (<div><SearchForm  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><TalentContainer talent = {this.filterTalent()} /></div>)
   }
 
 
@@ -133,13 +158,67 @@ renderJob = (routerProps) => {
   }
 
  }
+ handleSearchTerm = (termFromChild) => {
+  this.setState({
+    searchTerm: termFromChild
+  })
+}
 
  renderCompany = (routerProps) => {
   if(routerProps.location.pathname === "/companies"){
-    return  <CompanyContainer />
+    return  (<div><SearchForm  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><CompanyContainer companies ={this.filterCompanies()} /></div>)
   }
 
 }
+
+renderAddCompany = (routerProps) => {
+  if(routerProps.location.pathname === "/addCompany"){
+    return <CompanyForm handleCompany = {this.handleCompany} /> 
+  }
+}
+
+
+
+filterCompanies = () => {
+    
+   
+  let companies = [...this.props.companies]
+  if(this.state.searchTerm === ""){
+    return companies 
+  } else {
+     companies = this.props.companies.filter((val) => {
+      console.log(val)
+      return val.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    
+    })
+
+  }
+ return companies
+
+}
+
+filterTalent = () => {
+    
+   
+  let talents = [...this.props.talents]
+  if(this.state.searchTerm === ""){
+    return talents 
+  } else {
+     talents = this.props.talents.filter((val) => {
+      console.log(val.first_name)
+      return ( val.first_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      || val.last_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      )
+    
+    })
+
+  }
+ return talents
+
+}
+
+
+
 
   render() {
     return (
@@ -152,6 +231,7 @@ renderJob = (routerProps) => {
          <Route path="/talent" render={this.renderTalent}/>
          <Route path="/jobs" render={this.renderJob}/>
          <Route path="/companies" render={this.renderCompany}/>
+         <Route path="/addCompany" render={this.renderAddCompany}/>
          <Route path="/" component={Home}/>
        </Switch>
        
@@ -166,7 +246,9 @@ let mapStateToDispatch = {
   setUserInfo: setUserInfo,
   logOutUser: logOutUser,
   AllJobs: AllJobs,
-  allCompanies: allCompanies
+  allCompanies: allCompanies,
+  addCompany: addCompany
+  
 
 }
 
@@ -174,6 +256,8 @@ let mapStateToDispatch = {
 
 let mapStateToProps = state => {
   return {
+    companies: state.companyInformation.companies,
+    talents: state.talentInformation.users,
     token: state.userInformation.token
   }
 }

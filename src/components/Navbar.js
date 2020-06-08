@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux'
+// import SearchForm from '../Forms/SearchForm'
 
 
 
@@ -16,6 +17,7 @@ const Navbar = (props) => {
         }
         
         { props.token? <li><NavLink to="/profile">Profile</NavLink></li> : null} 
+        
         <li><NavLink to="/jobs">Jobs</NavLink></li>
         <li><NavLink to="/talent">Talent</NavLink></li>
         <li><NavLink to="/companies">Companies</NavLink></li>

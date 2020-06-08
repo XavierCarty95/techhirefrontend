@@ -5,3 +5,11 @@ export const  AllJobs = (jobs) => {
         
     }
 }
+
+export const  AddJob = (job) => {
+    return {
+        type: "ADD_JOB",
+        payload: job
+        
+    }
+}

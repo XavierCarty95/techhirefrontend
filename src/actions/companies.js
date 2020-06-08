@@ -6,3 +6,12 @@ export const  allCompanies = (companies) => {
         
     }
 }
+
+export const  addCompany = (company) => {
+    return {
+        type: "ADD_COMPANY",
+        payload: company
+        
+    }
+}
+

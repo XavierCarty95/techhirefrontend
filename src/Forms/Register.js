@@ -31,59 +31,106 @@ class Register extends Component {
   }
     render() {
         return (
-            <div className="container">
+            <div className ="ui center aligned">
                 <h1 className ="center-align"> Sign In</h1>
-                <form onSubmit = {this.handleSubmit}>
+                <form className= "ui form" onSubmit = {this.handleSubmit}>
+                <div class="two fields">
+                <div className="field">
                 <label htmlFor="first_name">
                  First Name 
-                <input type = "text" placeholder="enter your firstname"  name="first_name" value = {this.state.first_name} onChange={this.handleInput} />
-                </label>
+                 </label>
+                <input type = "text" style={{width: "500px"}} className="input" placeholder="enter your firstname"  name="first_name" value = {this.state.first_name} onChange={this.handleInput} />
+                </div>
+                <div className="field">
                 <label htmlFor="last_name">
-                Last Name
-                    <input type = "text" placeholder="enter your email"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
-                </label>
-                 Email
+                Last Name </label>
+                    <input style={{width: "500px"}} type = "text" className="input-width" placeholder="enter your email"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
+                
+                
+                </div>
+                </div>
+                <div class="two fields">
+                <div className="field">
                 <label htmlFor="email">
-                    <input type = "email" placeholder="enter your password" name="email" value = {this.state.email} onChange={this.handleInput} />
+                    Email
                 </label>
+                    <input type = "email" style={{width: "500px"}}  placeholder="enter your password" name="email" value = {this.state.email} onChange={this.handleInput} />
+                
+                </div>
                
+                <div className="field">
                 <label htmlFor="title">
                 Title
-                    <input type = "text" placeholder="enter your first name"   name="title" value = {this.state.title} onChange={this.handleInput} />
                 </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="enter your first name"   name="title" value = {this.state.title} onChange={this.handleInput} />
+                
+                </div>
+                </div>
+                <div class="two fields">
+                <div className="field">
                 <label htmlFor="linkedin">
                  Linkedin
-                    <input type = "text" placeholder="enter your last name"  name="linkedin" value = {this.state.linkedin} onChange={this.handleInput} />
-                </label>
+                 </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="enter your last name"  name="linkedin" value = {this.state.linkedin} onChange={this.handleInput} />
+                
+                </div>
+                <div className="field">
                 <label htmlFor="image">
                     Image
-                    <input type = "text" placeholder="image"  name="image" value = {this.state.image} onChange={this.handleInput} />
-                </label>
+                    </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="image"  name="image" value = {this.state.image} onChange={this.handleInput} />
+                
+                </div>
+                </div>
+                <div class="two fields">
+                <div className="field">
                 <label htmlFor="portfolio">
                  Portfolio
-                    <input type = "text" placeholder="portfolio"  name="portfolio" value = {this.state.portfolio} onChange={this.handleInput} />
-                </label>
+                 </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="portfolio"  name="portfolio" value = {this.state.portfolio} onChange={this.handleInput} />
+                
+                </div>
+                <div className="field">
                 <label htmlFor="github">
                     Github 
-                    <input type = "text" placeholder="github"  name="github" value = {this.state.github} onChange={this.handleInput} />
-                </label>
+                    </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="github"  name="github" value = {this.state.github} onChange={this.handleInput} />
+               
+                </div>
+                </div>
+                <div className="two fields">
+                <div className="field">
                 <label htmlFor="resume">
                     Resume 
-                    <input type = "text" placeholder="resume"  name="resume" value = {this.state.resume} onChange={this.handleInput} />
-                </label>
+                    </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="resume"  name="resume" value = {this.state.resume} onChange={this.handleInput} />
+                
+                </div>
+                <div className="field">
                 <label htmlFor="skills">
                     Skills
-                    <input type = "text" placeholder="skills"  name="skills" value = {this.state.skills} onChange={this.handleInput} />
-                </label>
+                    </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="skills"  name="skills" value = {this.state.skills} onChange={this.handleInput} />
+                
+                </div>
+                </div>
+                <div className="two fields">
+                <div className="field">
                 <label htmlFor="phone number ">
                     Phone Number
-                    <input type = "text" placeholder="resume"  name="phone_number" value = {this.state.phone_number} onChange={this.handleInput} />
-                </label>
+                    </label>
+                    <input type = "text" style={{width: "500px"}} placeholder="resume"  name="phone_number" value = {this.state.phone_number} onChange={this.handleInput} />
+               
+                </div>
+                <div className="field">
                 <label htmlFor="password ">
                     Password
-                    <input type = "password" placeholder="password"  name="password" value = {this.state.password} onChange={this.handleInput} />
-                </label>
-                <button className="btn waves-effect waves-light green accent-4" ><NavLink to="/login" style={{textDecoration: "none" , color:"white"}}>Sign In</NavLink></button> 
+                    </label>
+                    <input type = "password" style={{width: "500px"}} placeholder="password"  name="password" value = {this.state.password} onChange={this.handleInput} />
+                
+                </div>
+                </div>
+                Have an account ? <button className="btn waves-effect waves-light green accent-4" ><NavLink to="/login" style={{textDecoration: "none" , color:"white"}}>Sign In</NavLink></button> 
                 <input style={{marginLeft: "5px"}}className="btn waves-effect waves-light green accent-4" type="submit" value="Submit"/>
              </form>
             </div>

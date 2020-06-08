@@ -6,7 +6,7 @@ import Talent from '../talent/Talent'
 
 const TalentContainer = (props) =>  {
     console.log(props)
-    let arrayOfComponents = props.allTheUsers.map((user) => {
+    let arrayOfComponents = props.talent.map((user) => {
         return <Talent key={user.id} user={user}/>
       })
     return (
