@@ -1,4 +1,4 @@
-export const  allApplication = (applications) => {
+export const  allApplications = (applications) => {
     return {
         type: "DISPLAY_APPLICATIONS",
         payload: applications

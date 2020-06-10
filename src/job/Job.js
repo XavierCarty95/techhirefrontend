@@ -14,9 +14,7 @@ import { connect } from 'react-redux'
 
 
      handleApplication = () => {
-         console.log("You have applied")
-         alert("You have applied")
-             const user = {
+         const user = {
                  job_id: this.props.job.id ,
                  user_id: this.props.user.id,
                  name: this.props.job.company.website
@@ -52,6 +50,7 @@ import { connect } from 'react-redux'
             <p>Location: {this.props.job.location}</p>
             {this.props.user && filter.includes(this.props.job.id) && !this.state.applied ? <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> You have applied to this Job</button> : null }
             {this.props.user &&  !filter.includes(this.props.job.id) && !this.state.applied ? <button onClick={this.handleApplication} className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> Apply </button> : null}
+            {this.state.applied && this.props.user ? <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> You have applied to this Job</button> : null }
             <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}><a href = {this.props.job.company.website}> Visit Website </a></button>
          </div>
         )
@@ -73,6 +72,7 @@ let mapStateToProps = (state) => {
     }
 
 }
+
 
 
 

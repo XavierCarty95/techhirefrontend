@@ -16,7 +16,7 @@ render() {
             <h1 className = "center-align">Companies</h1>
             <div className = "container">
             {arrayOfComponents}     
-            <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white"}} to="/addCompany"> Add Company</NavLink></button>
+            <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white" , marginTop: "10px"}} to="/addCompany"> Add Company</NavLink></button>
              </div>   
             </div>
         )

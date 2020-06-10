@@ -8,7 +8,7 @@ const JobContainer = (props) =>  {
 
     console.log(props)
     let arrayOfComponents = props.jobs.map((job) => {
-        return <Job key={job.id} job={job} handleApplication={props.handleApplication}/>
+        return <Job key={job.id} job={job} handleApplication={props.handleApplication} jobs={props.jobs}/>
       })
     return (
         <div>

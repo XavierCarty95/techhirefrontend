@@ -6,7 +6,7 @@ import Home from './components/Home'
 import {displayAllUsers, setUserInfo ,logOutUser } from './actions/users'
 import {AllJobs} from './actions/jobs'
 import {allCompanies , addCompany} from './actions/companies'
-import {addApplication} from './actions/applications'
+import {addApplication , allApplications} from './actions/applications'
 import {connect } from 'react-redux'
 import TalentContainer from './containers/TalentContainer'
 import ProfileContainer from './containers/ProfileContainer'
@@ -61,6 +61,14 @@ class App extends Component {
   .then(response => {
       this.props.AllJobs(response)
    })
+
+   fetch("http://localhost:4000/applications")
+  .then(r => r.json())
+  .then(response => {
+      this.props.allApplications(response)
+   })
+
+   
 }
 handleLoginSubmit = (user) => {
   fetch("http://localhost:4000/users/login", {
@@ -108,8 +116,9 @@ handleApplication = (applicationInfo) => {
   })
     .then(r => r.json())
     .then(response => {
+      console.log(response)
         this.props.addApplication(response)
-        this.props.history.push("/jobs")
+        
         
 
     })
@@ -209,10 +218,10 @@ decideWhichArrayToRender = () => {
   let {theSearchParameter} = this.state
   console.log(theSearchParameter)
   let arrayToReturn = this.props.jobs
-  let listOfJobs = [...this.props.jobs]
+  
   if (theSearchParameter === "All") {
     
-    arrayToReturn = listOfJobs
+    arrayToReturn = this.props.jobs
   }
 
   if (theSearchParameter === "Full-Time") {
@@ -304,6 +313,7 @@ let mapStateToDispatch = {
   AllJobs: AllJobs,
   allCompanies: allCompanies,
   addCompany: addCompany,
+  allApplications: allApplications,
   addApplication: addApplication
   
 
