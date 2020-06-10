@@ -54,15 +54,15 @@ class Register extends Component {
                 <label htmlFor="email">
                     Email
                 </label>
-                    <input type = "email" style={{width: "500px"}}  placeholder="enter your password" name="email" value = {this.state.email} onChange={this.handleInput} />
+                    <input type = "email" style={{width: "500px"}}  placeholder="enter your email" name="email" value = {this.state.email} onChange={this.handleInput} />
                 
                 </div>
                
                 <div className="field">
                 <label htmlFor="title">
-                Title
+               Title
                 </label>
-                    <input type = "text" style={{width: "500px"}} placeholder="enter your first name"   name="title" value = {this.state.title} onChange={this.handleInput} />
+                    <input type = "text" style={{width: "500px"}} placeholder="enter your title ex. Full-Stack Developer"   name="title" value = {this.state.title} onChange={this.handleInput} />
                 
                 </div>
                 </div>
@@ -71,7 +71,7 @@ class Register extends Component {
                 <label htmlFor="linkedin">
                  Linkedin
                  </label>
-                    <input type = "text" style={{width: "500px"}} placeholder="enter your last name"  name="linkedin" value = {this.state.linkedin} onChange={this.handleInput} />
+                    <input type = "text" style={{width: "500px"}} placeholder="enter your linkend"  name="linkedin" value = {this.state.linkedin} onChange={this.handleInput} />
                 
                 </div>
                 <div className="field">
@@ -119,7 +119,7 @@ class Register extends Component {
                 <label htmlFor="phone number ">
                     Phone Number
                     </label>
-                    <input type = "text" style={{width: "500px"}} placeholder="resume"  name="phone_number" value = {this.state.phone_number} onChange={this.handleInput} />
+                    <input type = "text" style={{width: "500px"}} placeholder="phone number(optional)"  name="phone_number" value = {this.state.phone_number} onChange={this.handleInput} />
                
                 </div>
                 <div className="field">
