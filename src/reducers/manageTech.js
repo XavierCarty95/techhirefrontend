@@ -111,6 +111,34 @@ let userReducer = (state = initialUserState, action) => {
             
             
          }
+         let initialApplicationState = {
+            applications:[]
+        }
+
+    
+        let applicationReducer = (state = initialApplicationState, action) => {
+ 
+            switch(action.type) {
+               
+                case "DISPLAY_APPLICATIONS":
+                    return {
+                        ...state, 
+                        applications: action.payload
+                    }
+                    case "ADD_APPLICATION":
+                        let applicationAdd = action.payload
+                        let copyOfApplications = [...state.applications , applicationAdd]
+                         return {
+                             ...state, 
+                             applications: copyOfApplications
+                    }
+        
+                    default: 
+                    return state
+                }
+        
+        
+            }
         
     
     
@@ -121,7 +149,7 @@ let userReducer = (state = initialUserState, action) => {
     
         companyInformation: companiesReducer, 
         jobInformation: jobReducer, 
-        // applications: applicationReducer,
+        applicationInformation: applicationReducer,
         userInformation: userReducer,
         talentInformation: talentReducer
     

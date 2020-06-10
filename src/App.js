@@ -6,6 +6,7 @@ import Home from './components/Home'
 import {displayAllUsers, setUserInfo ,logOutUser } from './actions/users'
 import {AllJobs} from './actions/jobs'
 import {allCompanies , addCompany} from './actions/companies'
+import {addApplication} from './actions/applications'
 import {connect } from 'react-redux'
 import TalentContainer from './containers/TalentContainer'
 import ProfileContainer from './containers/ProfileContainer'
@@ -15,10 +16,12 @@ import Register from './Forms/Register'
 import Login from  './Forms/Login'
 import CompanyForm from  './Forms/CompanyForm'
 import SearchForm from  './Forms/SearchForm'
+import JobFilter from  './Forms/JobFilter'
 
 class App extends Component {
   state = {
-     searchTerm: ""
+     searchTerm: "",
+     theSearchParameter: "All"
 
   }
 
@@ -95,6 +98,23 @@ handleLoginSubmit = (user) => {
     })
 }
 
+handleApplication = (applicationInfo) => {
+  fetch("http://localhost:4000/applications", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(applicationInfo)
+  })
+    .then(r => r.json())
+    .then(response => {
+        this.props.addApplication(response)
+        this.props.history.push("/jobs")
+        
+
+    })
+}
+
 handleCompany = (companyInfo) => {
   fetch("http://localhost:4000/companies", {
     method: "POST",
@@ -154,7 +174,7 @@ renderForm = (routerProps) => {
 
 renderJob = (routerProps) => {
   if(routerProps.location.pathname === "/jobs"){
-    return  <JobContainer/>
+    return   (<div><JobFilter theSearchParameter= {this.state.theSearchParameter} handleTheSearchParameter={this.handleTheSearchParamater}/><JobContainer jobs={this.decideWhichArrayToRender()} handleApplication={this.handleApplication}/></div>)
   }
 
  }
@@ -177,6 +197,44 @@ renderAddCompany = (routerProps) => {
   }
 }
 
+handleTheSearchParamater = (theSearchTerm) => {
+
+  this.setState({
+    ...this.state,
+    theSearchParameter: theSearchTerm
+  })
+}
+decideWhichArrayToRender = () => {
+ 
+  let {theSearchParameter} = this.state
+  console.log(theSearchParameter)
+  let arrayToReturn = this.props.jobs
+  let listOfJobs = [...this.props.jobs]
+  if (theSearchParameter === "All") {
+    
+    arrayToReturn = listOfJobs
+  }
+
+  if (theSearchParameter === "Full-Time") {
+    arrayToReturn = this.props.jobs.filter((job) => {
+      return job.work_type === "Full-Time"
+    })
+  }
+
+  if (theSearchParameter === "Part-Time") {
+    arrayToReturn = this.props.jobs.filter((job) => {
+      return job.work_type === "Part-Time"
+    })
+  }
+  if (theSearchParameter === "Remote") {
+    arrayToReturn = this.props.jobs.filter((job) => {
+      return job.work_type === "Remote"
+    })
+  }
+
+  return arrayToReturn
+}
+
 
 
 filterCompanies = () => {
@@ -187,7 +245,6 @@ filterCompanies = () => {
     return companies 
   } else {
      companies = this.props.companies.filter((val) => {
-      console.log(val)
       return val.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     
     })
@@ -205,7 +262,6 @@ filterTalent = () => {
     return talents 
   } else {
      talents = this.props.talents.filter((val) => {
-      console.log(val.first_name)
       return ( val.first_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
       || val.last_name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
       )
@@ -247,23 +303,20 @@ let mapStateToDispatch = {
   logOutUser: logOutUser,
   AllJobs: AllJobs,
   allCompanies: allCompanies,
-  addCompany: addCompany
+  addCompany: addCompany,
+  addApplication: addApplication
   
 
 }
 
-
-
 let mapStateToProps = state => {
   return {
+    jobs: state.jobInformation.jobs,
     companies: state.companyInformation.companies,
     talents: state.talentInformation.users,
     token: state.userInformation.token
   }
 }
-
-
-
 
 let componentWithRouterProps = withRouter(App)
 

@@ -5,9 +5,10 @@ import Job from '../job/Job'
 
 
 const JobContainer = (props) =>  {
-    console.log(props.allTheJobs)
-    let arrayOfComponents = props.allTheJobs.map((job) => {
-        return <Job key={job.id} job={job}/>
+
+    console.log(props)
+    let arrayOfComponents = props.jobs.map((job) => {
+        return <Job key={job.id} job={job} handleApplication={props.handleApplication}/>
       })
     return (
         <div>
@@ -20,7 +21,8 @@ const JobContainer = (props) =>  {
 let mapStateToProps = (state) => {
  
     return {
-        allTheJobs: state.jobInformation.jobs
+        allTheJobs: state.jobInformation.jobs,
+        user: state.userInformation.user
     }
 
 }
