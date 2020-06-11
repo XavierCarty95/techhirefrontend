@@ -4,11 +4,11 @@ import Job from '../job/Job'
  
 
 
-const JobContainer = (props) =>  {
+const JobContainer = ({jobs , handleApplication}) =>  {
 
-    console.log(props)
-    let arrayOfComponents = props.jobs.map((job) => {
-        return <Job key={job.id} job={job} handleApplication={props.handleApplication} jobs={props.jobs}/>
+    
+    let arrayOfComponents = jobs.map((job) => {
+        return <Job key={job.id} job={job} handleApplication={handleApplication}/>
       })
     return (
         <div>

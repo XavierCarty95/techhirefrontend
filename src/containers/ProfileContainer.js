@@ -1,31 +1,38 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {NavLink} from 'react-router-dom'
 
 
 
+ function ProfileContainer({profile: {id,image , first_name , last_name, email , title , linkedin , portfolio , github , resume , skills}, handleDelete}) {
+  
+    const handleClick = () => {
+        
+        handleDelete(id)
+    
+    }
 
- function ProfileContainer(props) {
-     console.log(props)
-   
+
     return (
         <div className = "container center-align">
         
-        <img src = {props.profile.image} style = {image} alt={props.profile.first_name}/>
-        <h3>Name: {props.profile.first_name} {props.profile.last_name}</h3>
-        <p>Email: {props.profile.email}</p>
-        <p>Role: {props.profile.title} </p>
-        <p>Linkedin: {props.profile.linkedin} </p>
-        <p>Portfolio: {props.profile.portfolio} </p>
-        <p>Github: {props.profile.github} </p>
-        <p>Resume: {props.profile.resume} </p>
-        <p>Skills {props.profile.skills} </p>
-            
+        <img src = {image} style = {images} alt={first_name}/>
+        <h3>Name: {first_name} {last_name}</h3>
+        <p>Email: {email}</p>
+        <p>Role: {title} </p>
+        <p>Linkedin: {linkedin} </p>
+        <p>Portfolio: {portfolio} </p>
+        <p>Github: {github} </p>
+        <p>Resume: {resume} </p>
+        <p>Skills {skills} </p>
+        <button onClick={handleClick} className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> DELETE Profile </button>
+        <button className="btn waves-effect waves-light green accent-4" ><NavLink to="/updateProfile" style={{marginLeft: "5px"}}>Edit Profile</NavLink></button> 
         </div>
     )
 }
 
 
-const image = {
+const images = {
    
    borderRadius: "50%"
 

@@ -8,7 +8,9 @@ class CompanyContainer extends Component {
 
    
 render() {
-        let arrayOfComponents = this.props.companies.map((company) => {
+
+        const{companies} = this.props
+        let arrayOfComponents = companies.map((company) => {
            return <Company key={company.id} company={company}/>
                })
         return (

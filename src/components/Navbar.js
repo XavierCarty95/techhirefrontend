@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 
 const Navbar = (props) => {
-  console.log(props)
+    console.log(props)
     return(
     <nav>
     <div className = "green accent-4">

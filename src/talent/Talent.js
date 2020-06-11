@@ -1,26 +1,28 @@
 import React from 'react'
 
-const Talent = props => {
- 
+const Talent = ({user :{id, image , first_name , last_name , email , title ,portfolio , skills , phone_number , github ,linkedin , resume}}) => {
+  
+
+  
     return (
         
         
-     <div class="column">
-    <div class="ui fluid card">
-      <div class="image">
-        <img src={props.user.image} alt={props.user.first_name} style={{height: "200px"}}/>
+     <div className="column">
+    <div className="ui fluid card">
+      <div className="image">
+        <img src={image} alt={first_name} style={{height: "200px"}}/>
       </div>
-      <div class="content">
-       <h3>Name: {props.user.first_name} {props.user.last_name}</h3>
+      <div className="content">
+       <h3>Name: {first_name} {last_name}</h3>
          
-        <p>Email: {props.user.email}</p>
-         <p>Role: {props.user.title} </p>
-         <p>Portfolio: {props.user.portfolio} </p>
-         <p>Resume: {props.user.resume} </p>
-         <p>Skills {props.user.skills} </p>
-         <p>{props.user.phone_number} </p>
-       <a href = {props.user.github}> <i class="github alternate icon"></i></a>
-       <a href = {props.user.linkedin}> <i class="linkedin icon"></i> </a>
+        <p>Email: {email}</p>
+         <p>Role: {title} </p>
+         <p>Portfolio: {portfolio} </p>
+         <p>Resume: {resume} </p>
+         <p>Skills {skills} </p>
+         <p>{phone_number} </p>
+       <a href = {github}> <i className="github alternate icon"></i></a>
+       <a href = {linkedin}> <i className="linkedin icon"></i> </a>
          
       </div>
     </div>

@@ -4,15 +4,15 @@ import Talent from '../talent/Talent'
  
 
 
-const TalentContainer = (props) =>  {
-    console.log(props)
-    let arrayOfComponents = props.talent.map((user) => {
+const TalentContainer = ({talent}) =>  {
+    
+    let arrayOfComponents = talent.map((user) => {
         return <Talent key={user.id} user={user}/>
       })
     return (
         <div>
             <h1 className="center-align"> Talent </h1>
-            <div class="ui three column grid container">
+            <div className="ui three column grid container">
                  {arrayOfComponents}
             </div>
         </div>

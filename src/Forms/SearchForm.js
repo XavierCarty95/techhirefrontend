@@ -16,7 +16,7 @@ class SearchForm extends Component {
                 
                 <div className="ui category search center-align" style={{marginTop: '30px'}}>
                  <div className="ui icon input">
-                 <input className="prompt" type="text" name = "searchTerm" placeholder="Search" value={this.props.searchTerm} onChange={this.handleThisSearch}/>
+                 <input className="prompt" type="text" name = "searchTerm" placeholder={this.props.placeholder} value={this.props.searchTerm} onChange={this.handleThisSearch}/>
                   <i className="search icon"></i>
                    </div>
                       <div className="results"></div>

@@ -3,7 +3,7 @@ import {Switch, Route, withRouter} from 'react-router-dom'
 import "./App.css"
 import NavBar from './components/Navbar'
 import Home from './components/Home'
-import {displayAllUsers, setUserInfo ,logOutUser } from './actions/users'
+import {displayAllUsers, setUserInfo ,logOutUser , deleteUser ,updateUser} from './actions/users'
 import {AllJobs} from './actions/jobs'
 import {allCompanies , addCompany} from './actions/companies'
 import {addApplication , allApplications} from './actions/applications'
@@ -17,6 +17,7 @@ import Login from  './Forms/Login'
 import CompanyForm from  './Forms/CompanyForm'
 import SearchForm from  './Forms/SearchForm'
 import JobFilter from  './Forms/JobFilter'
+import ProfileForm from './Forms/ProfileForm'
 
 class App extends Component {
   state = {
@@ -106,6 +107,34 @@ handleLoginSubmit = (user) => {
     })
 }
 
+handleDelete = (id) => {
+  fetch(`http://localhost:4000/users/${id}`, {
+    method: "DELETE",
+   })
+    .then(r => r.json())
+    .then(response => {
+        this.props.deleteUser(response)
+        this.props.history.push("/signin")
+
+    })
+}
+
+handleUpdate = (id , userInfo ) => {
+  fetch(`http://localhost:4000/users/${id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(userInfo)
+  })
+    .then(r => r.json())
+    .then(response => {
+        this.props.updateUser(response)
+        this.props.history.push("/profile")
+
+    })
+}
+
 handleApplication = (applicationInfo) => {
   fetch("http://localhost:4000/applications", {
     method: "POST",
@@ -160,7 +189,7 @@ renderForm = (routerProps) => {
 
  renderProfile = (routerProps) => {
     if(this.props.token){
-      return <ProfileContainer/> 
+      return <ProfileContainer  handleDelete={this.handleDelete}/> 
     } else {
       this.props.history.push("/login")
     }
@@ -168,7 +197,7 @@ renderForm = (routerProps) => {
 
  renderTalent = (routerProps) => {
   if(routerProps.location.pathname === "/talent"){
-    return (<div><SearchForm  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><TalentContainer talent = {this.filterTalent()} /></div>)
+    return (<div><SearchForm placeholder="search by name" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><TalentContainer talent = {this.filterTalent()} /></div>)
   }
 
 
@@ -195,7 +224,7 @@ renderJob = (routerProps) => {
 
  renderCompany = (routerProps) => {
   if(routerProps.location.pathname === "/companies"){
-    return  (<div><SearchForm  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><CompanyContainer companies ={this.filterCompanies()} /></div>)
+    return  (<div><SearchForm placeholder="search by company name"  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><CompanyContainer companies ={this.filterCompanies()} /></div>)
   }
 
 }
@@ -203,6 +232,18 @@ renderJob = (routerProps) => {
 renderAddCompany = (routerProps) => {
   if(routerProps.location.pathname === "/addCompany"){
     return <CompanyForm handleCompany = {this.handleCompany} /> 
+  }
+}
+
+renderUpdateProfile = (routerProps) => {
+  if(routerProps.location.pathname === "/updateProfile"){
+    return <ProfileForm handleUpdate = {this.handleUpdate} /> 
+  }
+}
+
+renderHome = (routerProps) => {
+  if(routerProps.location.pathname === "/"){
+    return <div><SearchForm placeholder= "Search by comp" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /></div> 
   }
 }
 
@@ -297,7 +338,8 @@ filterTalent = () => {
          <Route path="/jobs" render={this.renderJob}/>
          <Route path="/companies" render={this.renderCompany}/>
          <Route path="/addCompany" render={this.renderAddCompany}/>
-         <Route path="/" component={Home}/>
+         <Route path="/updateProfile" render={this.renderUpdateProfile}/>
+         <Route path="/" render={this.renderHome}/>
        </Switch>
        
       </div>
@@ -314,7 +356,9 @@ let mapStateToDispatch = {
   allCompanies: allCompanies,
   addCompany: addCompany,
   allApplications: allApplications,
-  addApplication: addApplication
+  addApplication: addApplication,
+  deleteUser: deleteUser,
+  updateUser: updateUser
   
 
 }

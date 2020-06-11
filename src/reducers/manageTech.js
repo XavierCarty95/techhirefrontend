@@ -23,6 +23,20 @@ let userReducer = (state = initialUserState, action) => {
                 ...state, 
                 users: action.payload
             }
+
+            case "UPDATE_USER":
+                
+                
+                return {
+                    ...state, 
+                    user: action.payload
+                }
+
+        case "DELETE_USER": 
+           return {
+               ...state, 
+               users: state.users.filter(user => user !== action.payload)
+           }
         case "LOGOUT_USER":
             return { }
 
@@ -48,7 +62,7 @@ let userReducer = (state = initialUserState, action) => {
                     users: action.payload
                 }
     
-    
+            
                 default: 
                 return state
             }
