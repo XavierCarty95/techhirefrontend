@@ -10,7 +10,7 @@ const Navbar = (props) => {
     return(
     <nav>
     <div className = "green accent-4">
-    <NavLink to="/">TechHire</NavLink>
+    <NavLink to="/" style={{fontSize: "32px" , marginLeft: "10px"}}>TechHire</NavLink>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         {
          props.token?  <li onClick={props.logout}><NavLink to="/login">Logout, {props.user.email}</NavLink></li> : <li><NavLink to="/login">Sign In</NavLink></li>

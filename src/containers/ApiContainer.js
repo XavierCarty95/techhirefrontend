@@ -14,8 +14,10 @@ export class ApiContainer extends Component {
 
         })
         return (
-            <div>
+        <div className ="container">
+            <div className="ui relaxed divided list">
                 {listArray}
+            </div>
             </div>
         )
     }

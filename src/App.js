@@ -129,6 +129,7 @@ handleUpdate = (id , userInfo ) => {
   })
     .then(r => r.json())
     .then(response => {
+      console.log(response)
         this.props.updateUser(response)
         this.props.history.push("/profile")
 
@@ -212,7 +213,7 @@ renderForm = (routerProps) => {
 
 renderJob = (routerProps) => {
   if(routerProps.location.pathname === "/jobs"){
-    return   (<div><JobFilter theSearchParameter= {this.state.theSearchParameter} handleTheSearchParameter={this.handleTheSearchParamater}/><JobContainer jobs={this.decideWhichArrayToRender()} handleApplication={this.handleApplication}/></div>)
+    return   (<div><div className ="container" style={{marginTop: "10px"}}><JobFilter theSearchParameter= {this.state.theSearchParameter} handleTheSearchParameter={this.handleTheSearchParamater}/></div><JobContainer jobs={this.decideWhichArrayToRender()} handleApplication={this.handleApplication}/></div>)
   }
 
  }

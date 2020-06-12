@@ -16,7 +16,7 @@ import {NavLink} from 'react-router-dom'
     return (
         <div className = "container center-align">
         
-        <img src = {image} style = {images} alt={first_name}/>
+        <img className = "ui small left floated" src = {image} style = {images} alt={first_name}/>
         <h3>Name: {first_name} {last_name}</h3>
         <p>Email: {email}</p>
         <p>Role: {title} </p>
@@ -25,7 +25,7 @@ import {NavLink} from 'react-router-dom'
         <p>Github: {github} </p>
         <p>Resume: {resume} </p>
         <p>Skills {skills} </p>
-        <button onClick={handleClick} className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> DELETE Profile </button>
+        <button onClick={handleClick} className="btn waves-effect waves-light red accent-4" style={{marginRight: "5px"}}> DELETE Profile </button>
         <button className="btn waves-effect waves-light green accent-4" ><NavLink to="/updateProfile" style={{marginLeft: "5px"}}>Edit Profile</NavLink></button> 
         </div>
     )

@@ -44,7 +44,10 @@ import { connect } from 'react-redux'
      }   
 
         return (
-            <div>
+         
+            <div class="item">
+      
+             <div class="content">
             <h3>Company Name: {name}</h3>
             <h4>Role: {role}</h4>
             <h4>Work-Type: {work_type}</h4>
@@ -54,7 +57,9 @@ import { connect } from 'react-redux'
             {this.props.user &&  !filter.includes(id) && !this.state.applied ? <button onClick={this.handleApplication} className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> Apply </button> : null}
             {this.state.applied && this.props.user ? <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> You have applied to this Job</button> : null }
             <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}><a href = {company.website}> Visit Website </a></button>
+           </div>
          </div>
+      
         )
       }
 
