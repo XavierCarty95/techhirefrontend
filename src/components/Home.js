@@ -41,8 +41,8 @@ export class Home extends Component {
        
         return (
             <div>
-                 <h1 className="center-align"> Welcome To TechHire </h1>
-                 <h2 className="center-align"> Current Jobs on GitHub Api </h2>
+                 <h1 style ={{marginLeft: "50px" , marginTop: "30px"}}className="center-align"> Welcome To TechHire </h1>
+                 <h2 style ={{marginLeft: "50px" , marginTop: "30px"}}className="center-align"> Current Jobs on GitHub Api </h2>
                  <ApiContainer listOfJobs={this.state.listOfJobs} api={this.filterApi()}/>
                 
             </div>

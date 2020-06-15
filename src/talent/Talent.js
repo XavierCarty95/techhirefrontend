@@ -21,8 +21,8 @@ const Talent = ({user :{id, image , first_name , last_name , email , title ,port
          <p>Resume: {resume} </p>
          <p>Skills {skills} </p>
          <p>{phone_number} </p>
-       <a href = {github}> <i className="github alternate icon"></i></a>
-       <a href = {linkedin}> <i className="linkedin icon"></i> </a>
+       <a href = {github} className="fa fa-github"> </a>
+       <a href = {linkedin} className="fa fa-linkedin"> </a>
          
       </div>
     </div>

@@ -1,14 +1,15 @@
 import React from 'react'
 
-export default function Company(props) {
+export default function Company({company:{website , name , email , about} }) {
     return (
-        <div>
-            
-           <h1>{props.company.name}</h1>
-           <p> Email: {props.company.email}</p>
-           <p>Website: <a href = {props.company.website}>{props.company.website}</a></p>
-           <p>About: {props.company.about} </p>
-        
+       
+            <div class="item">
+            <div class="content">
+           <h1>{name}</h1>
+           <p> Email: {email}</p>
+           <p>Website: <a href = {website}>{website}</a></p>
+           <p>About: {about} </p>
         </div>
+     </div>
     )
 }

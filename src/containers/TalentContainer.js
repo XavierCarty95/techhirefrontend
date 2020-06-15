@@ -10,7 +10,7 @@ const TalentContainer = ({talent}) =>  {
         return <Talent key={user.id} user={user}/>
       })
     return (
-        <div>
+        <div style = {{height: "100%"}}>
             <h1 className="center-align"> Talent </h1>
             <div className="ui three column grid container">
                  {arrayOfComponents}

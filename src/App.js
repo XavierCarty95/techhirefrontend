@@ -18,6 +18,7 @@ import CompanyForm from  './Forms/CompanyForm'
 import SearchForm from  './Forms/SearchForm'
 import JobFilter from  './Forms/JobFilter'
 import ProfileForm from './Forms/ProfileForm'
+import Footer from './components/Footer'
 
 class App extends Component {
   state = {
@@ -244,7 +245,7 @@ renderUpdateProfile = (routerProps) => {
 
 renderHome = (routerProps) => {
   if(routerProps.location.pathname === "/"){
-    return <div><SearchForm placeholder= "Search by comp" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /></div> 
+    return <div><SearchForm placeholder= "Search by comp" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /> <Footer /></div> 
   }
 }
 
@@ -342,6 +343,7 @@ filterTalent = () => {
          <Route path="/updateProfile" render={this.renderUpdateProfile}/>
          <Route path="/" render={this.renderHome}/>
        </Switch>
+        
        
       </div>
     )

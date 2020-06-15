@@ -14,11 +14,14 @@ render() {
            return <Company key={company.id} company={company}/>
                })
         return (
-            <div>
+            <div >
+            
             <h1 className = "center-align">Companies</h1>
             <div className = "container">
+            <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white" , marginTop: "10px"}} to="/addCompany"> Add A Company</NavLink></button>
+            <div className="ui relaxed divided list">
             {arrayOfComponents}     
-            <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white" , marginTop: "10px"}} to="/addCompany"> Add Company</NavLink></button>
+            </div>
              </div>   
             </div>
         )
