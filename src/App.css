@@ -101,3 +101,14 @@
 
     border-radius: 0%;
   }
+
+  .text {
+      font-size: 15px;
+  }
+
+.text-row
+{
+  border:2px solid grey;  
+  border-radius: 10px;
+  margin-top:10px; 
+}

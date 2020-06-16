@@ -34,8 +34,7 @@ let userReducer = (state = initialUserState, action) => {
 
         case "DELETE_USER": 
            return {
-               ...state, 
-               users: state.users.filter(user => user !== action.payload)
+               ...state
            }
         case "LOGOUT_USER":
             return { }

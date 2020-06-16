@@ -125,8 +125,9 @@ handleDelete = (id) => {
    })
     .then(r => r.json())
     .then(response => {
-        this.props.deleteUser(response)
-        this.props.history.push("/signin")
+      localStorage.clear("token")
+       this.props.logOutUser()
+        this.props.history.push("/login")
 
     })
 }
