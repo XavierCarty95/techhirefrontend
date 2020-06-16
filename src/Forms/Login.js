@@ -18,15 +18,22 @@ class Login extends Component {
       handleSubmit = (evt) => {
         evt.preventDefault()
         this.props.handleLogin(this.state)
+        this.setState({
+          email: "",
+          password: ""
+        })
       }
+
+      
     
     render() {
         return (
             <div className ="ui center aligned">
             
-           
               <form  style = {{marginTop: "70px"}} className= "ui form"  onSubmit = {this.handleSubmit}> 
               <h1 className= "ui center aligned" >Sign In</h1>
+
+              <p style = {{color: "red"}}> {this.props.message} </p>
               <div className="field">
               <label htmlFor="email">Email</label>
               <input style={{width: "500px"}} placeholder = "Email" type = "text" name="email" value = {this.state.email} onChange={this.handleInput} />

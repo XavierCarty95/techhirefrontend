@@ -24,7 +24,7 @@ import {NavLink} from 'react-router-dom'
         <p>Portfolio: {portfolio} </p>
         <p>Github: {github} </p>
         <p>Resume: {resume} </p>
-        <p>Skills {skills} </p>
+        <p>Skills: {skills} </p>
         <button onClick={handleClick} className="btn waves-effect waves-light red accent-4" style={{marginRight: "5px"}}> DELETE Profile </button>
         <button className="btn waves-effect waves-light green accent-4" ><NavLink to="/updateProfile" style={{marginLeft: "5px"}}>Edit Profile</NavLink></button> 
         </div>

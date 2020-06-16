@@ -31,11 +31,11 @@ export class ProfileForm extends Component {
     
     render() {
         return (
-            <div>
+            <div style = {{marginTop: "20px"}} className = "container">
                 <div className ="ui center aligned">
                 <h1 className ="center-align"> Sign In</h1>
                 <form className= "ui form" onSubmit = {this.handleSubmit}>
-                <div class="two fields">
+                
                 <div className="field">
                 <label htmlFor="first_name">
                  First Name 
@@ -46,20 +46,15 @@ export class ProfileForm extends Component {
                 <label htmlFor="last_name">
                 Last Name </label>
                     <input style={{width: "500px"}} type = "text" className="input-width" placeholder="enter your email"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
-                
-                
                 </div>
-                </div>
-                <div class="two fields">
+                
                 <div className="field">
                 <label htmlFor="title">
                Title
                 </label>
                     <input type = "text" style={{width: "500px"}} placeholder="enter your title ex. Full-Stack Developer"   name="title" value = {this.state.title} onChange={this.handleInput} />
-                
                 </div>
-                </div>
-                <div class="two fields">
+               
                 <div className="field">
                 <label htmlFor="linkedin">
                  Linkedin
@@ -72,26 +67,22 @@ export class ProfileForm extends Component {
                     Image
                     </label>
                     <input type = "text" style={{width: "500px"}} placeholder="image"  name="image" value = {this.state.image} onChange={this.handleInput} />
-                
                 </div>
-                </div>
-                <div class="two fields">
+               
                 <div className="field">
                 <label htmlFor="portfolio">
                  Portfolio
                  </label>
                     <input type = "text" style={{width: "500px"}} placeholder="portfolio"  name="portfolio" value = {this.state.portfolio} onChange={this.handleInput} />
-                
                 </div>
+                
                 <div className="field">
                 <label htmlFor="github">
                     Github 
                     </label>
                     <input type = "text" style={{width: "500px"}} placeholder="github"  name="github" value = {this.state.github} onChange={this.handleInput} />
+               </div>
                
-                </div>
-                </div>
-                <div className="two fields">
                 <div className="field">
                 <label htmlFor="resume">
                     Resume 
@@ -104,10 +95,7 @@ export class ProfileForm extends Component {
                     Skills
                     </label>
                     <input type = "text" style={{width: "500px"}} placeholder="skills"  name="skills" value = {this.state.skills} onChange={this.handleInput} />
-                
                 </div>
-                </div>
-                
                 <input style={{marginLeft: "5px"}}className="btn waves-effect waves-light green accent-4" type="submit" value="Submit"/>
              </form>
             </div>

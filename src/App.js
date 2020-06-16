@@ -2,6 +2,7 @@ import  React, { Component} from 'react'
 import {Switch, Route, withRouter} from 'react-router-dom'
 import "./App.css"
 import NavBar from './components/Navbar'
+import SideNav from './components/SideNav'
 import Home from './components/Home'
 import {displayAllUsers, setUserInfo ,logOutUser , deleteUser ,updateUser} from './actions/users'
 import {AllJobs} from './actions/jobs'
@@ -23,7 +24,8 @@ import Footer from './components/Footer'
 class App extends Component {
   state = {
      searchTerm: "",
-     theSearchParameter: "All"
+     theSearchParameter: "All",
+     message : " "
 
   }
 
@@ -82,12 +84,21 @@ handleLoginSubmit = (user) => {
  })
  .then(r => r.json())
  .then( response => {
-     console.log(response)   
-  localStorage.token = response.token
+  if(response.message){
+    this.setState({
+       ...this.state, 
+       message: response.message
+    })
 
-     this.props.setUserInfo(response)
-     this.props.history.push("/profile")
-
+    setTimeout(() => {
+      this.setState({ ...this.state , message: "" });
+    }, 5000)
+  
+  } else {
+    localStorage.token = response.token
+    this.props.setUserInfo(response)
+    this.props.history.push("/profile")
+   }
   })
  }
 
@@ -177,7 +188,7 @@ handleCompany = (companyInfo) => {
 renderForm = (routerProps) => {
 
     if(routerProps.location.pathname === "/login"){
-       return <Login handleLogin={this.handleLoginSubmit} />
+       return <Login message={this.state.message} handleLogin={this.handleLoginSubmit} />
     } else if (routerProps.location.pathname === "/register") {
       return <Register
         
@@ -245,7 +256,7 @@ renderUpdateProfile = (routerProps) => {
 
 renderHome = (routerProps) => {
   if(routerProps.location.pathname === "/"){
-    return <div><SearchForm placeholder= "Search by comp" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /> <Footer /></div> 
+    return <div><SearchForm placeholder= "Search by company name" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /> <Footer /></div> 
   }
 }
 
@@ -342,8 +353,9 @@ filterTalent = () => {
          <Route path="/addCompany" render={this.renderAddCompany}/>
          <Route path="/updateProfile" render={this.renderUpdateProfile}/>
          <Route path="/" render={this.renderHome}/>
+       
        </Switch>
-        
+       <SideNav />
        
       </div>
     )

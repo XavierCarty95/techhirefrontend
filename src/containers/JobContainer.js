@@ -13,7 +13,7 @@ const JobContainer = ({jobs , handleApplication}) =>  {
     return (
         <div className ="container">
             <div className="ui relaxed divided list">
-            <h1 className = "center-align">Job</h1>
+            <h1 className = "center-align"> Tech Hire Sponsored Job</h1>
             {arrayOfComponents}
          </div>
         </div>
