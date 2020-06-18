@@ -11,7 +11,7 @@ const JobContainer = ({jobs , handleApplication}) =>  {
         return <Job key={job.id} job={job} handleApplication={handleApplication}/>
       })
     return (
-        <div className ="container">
+        <div style={{marginBottom: "30px"}} className ="container">
             <div className="ui relaxed divided list">
             <h1 className = "center-align"> Tech Hire Sponsored Job</h1>
             {arrayOfComponents}

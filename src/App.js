@@ -112,12 +112,15 @@ handleLoginSubmit = (user) => {
   })
     .then(r => r.json())
     .then(response => {
+        let users = [...this.props.talents , response.user]
         localStorage.token = response.token
         this.props.setUserInfo(response)
+        this.props.displayAllUsers(users)
         this.props.history.push("/profile")
 
     })
 }
+
 
 handleDelete = (id) => {
   fetch(`http://localhost:4000/users/${id}`, {
@@ -125,12 +128,23 @@ handleDelete = (id) => {
    })
     .then(r => r.json())
     .then(response => {
+      
+      console.log(response)
       localStorage.clear("token")
        this.props.logOutUser()
+       this.props.deleteUser(response)
+       this.reload()
         this.props.history.push("/login")
 
     })
 }
+
+
+reload = () => 
+{
+    //RELOAD COMPONENT
+    this.componentDidMount();
+};
 
 handleUpdate = (id , userInfo ) => {
   fetch(`http://localhost:4000/users/${id}`, {
@@ -374,7 +388,8 @@ let mapStateToDispatch = {
   allApplications: allApplications,
   addApplication: addApplication,
   deleteUser: deleteUser,
-  updateUser: updateUser
+  updateUser: updateUser,
+
   
 
 }

@@ -44,7 +44,7 @@ class Register extends Component {
                 <div className="field">
                 <label htmlFor="last_name">
                 Last Name </label>
-                    <input style={{width: "500px"}} type = "text" className="input-width" placeholder="enter your email"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
+                    <input style={{width: "500px"}} type = "text" className="input-width" placeholder="enter your last name"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
                 
                 
                 </div>

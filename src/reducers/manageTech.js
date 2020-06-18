@@ -32,10 +32,7 @@ let userReducer = (state = initialUserState, action) => {
                     user: action.payload
                 }
 
-        case "DELETE_USER": 
-           return {
-               ...state
-           }
+        
         case "LOGOUT_USER":
             return { }
 
@@ -60,7 +57,14 @@ let userReducer = (state = initialUserState, action) => {
                     ...state, 
                     users: action.payload
                 }
-    
+
+
+                case "DELETE_USER": 
+                return {
+                    ...state,
+                    users: state.users.filter(user => user.id !== action.payload)
+                   
+                }
             
                 default: 
                 return state

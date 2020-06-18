@@ -56,7 +56,7 @@ import { connect } from 'react-redux'
             {this.props.user && filter.includes(id) && !this.state.applied ? <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> You have applied to this Job</button> : null }
             {this.props.user &&  !filter.includes(id) && !this.state.applied ? <button onClick={this.handleApplication} className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> Apply </button> : null}
             {this.state.applied && this.props.user ? <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}> You have applied to this Job</button> : null }
-            <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}><a href = {company.website}> Visit Website </a></button>
+            <button className="btn waves-effect waves-light green accent-4" style={{marginLeft: "5px"}}><a href = {company.website} target = "_blank" rel="noopener noreferrer"> Visit Website </a></button>
            </div>
          </div>
       

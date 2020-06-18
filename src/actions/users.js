@@ -18,6 +18,7 @@ export const displayAllUsers = (users) => {
 
 }
 
+
 export const  logOutUser = () => {
     return {
         type: "LOGOUT_USER"

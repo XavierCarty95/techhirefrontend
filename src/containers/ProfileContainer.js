@@ -15,8 +15,9 @@ import {NavLink} from 'react-router-dom'
 
     return (
         <div style = {{marginTop: "100px"  }} className = "container text text-row center-align">
-        <img className = "ui small left floated" src = {image} style = {images} alt={first_name}/>
-        <div style = {{marginBottom: "100px" , marginTop: "20px"  }} className = "container">
+        {/* <img className = "ui small left floated" src = {image} style = {images} alt={first_name}/> */}
+        <div style = {{marginBottom: "100px" , marginTop: "20px", whiteSpace: "nowrap"  }} className = "container center-align">
+        <img src = {image} style = {images} alt={first_name}/>
         <h3>Name: {first_name} {last_name}</h3>
         <p>Email: {email}</p>
         <p>Role: {title} </p>
@@ -25,9 +26,9 @@ import {NavLink} from 'react-router-dom'
         <p>Github: {github} </p>
         <p>Resume: {resume} </p>
         <p>Skills: {skills} </p>
-        <span> <button onClick={handleClick} className="btn waves-effect waves-light red accent-4" style={{marginRight: "5px" }}> DELETE Profile </button></span>
+        <span> <button onClick={handleClick} className="btn waves-effect waves-light red accent-4" style={{marginRight: "5px"  }}> DELETE Profile </button></span>
         <span><button className="btn waves-effect waves-light green accent-4" ><NavLink to="/updateProfile" style={{marginLeft: "10px"}}>Edit Profile</NavLink></button> </span>
-        </div>
+         </div>
         </div>
     )
 }
@@ -35,9 +36,10 @@ import {NavLink} from 'react-router-dom'
 
 const images = {
    
-   borderRadius: "50%",
+  
    marginLeft: "20px",
-   marginTop: "20px"
+   marginTop: "20px",
+   marginRight: "20px"
 
 }
 

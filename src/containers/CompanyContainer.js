@@ -17,7 +17,7 @@ render() {
             <div >
             
             <h1 className = "center-align">Companies</h1>
-            <div className = "container">
+            <div style={{marginBottom: "30px"}} className = "container">
             <button className="btn waves-effect waves-light green accent-4"><NavLink style={{textDecoration: "none" , color:"white" , marginTop: "10px"}} to="/addCompany"> Add A Company</NavLink></button>
             <div className="ui relaxed divided list">
             {arrayOfComponents}     
