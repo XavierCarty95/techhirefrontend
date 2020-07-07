@@ -342,6 +342,7 @@ render() {
          <Route path="/addCompany" render={this.renderAddCompany}/>
          <Route path="/updateProfile" render={this.renderUpdateProfile}/>
          <Route path="/" render={this.renderHome}/>
+         <Route path="/techhirefrontend" render={this.renderHome}/>
        
        </Switch>
        <SideNav />
