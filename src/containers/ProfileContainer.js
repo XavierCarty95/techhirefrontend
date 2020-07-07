@@ -12,7 +12,6 @@ import {NavLink} from 'react-router-dom'
     
     }
 
-
     return (
         <div style = {{marginTop: "100px"  }} className = "container text text-row center-align">
         {/* <img className = "ui small left floated" src = {image} style = {images} alt={first_name}/> */}

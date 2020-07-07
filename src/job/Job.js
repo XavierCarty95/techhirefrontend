@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-
-
- class Job extends Component {
+class Job extends Component {
   
     state = {
 
        applied: false            
-
-
-    }
+   }
 
 
      handleApplication = () => {
@@ -62,14 +58,6 @@ import { connect } from 'react-redux'
       
         )
       }
-
-
-
-
-
-
-
-
 }
 let mapStateToProps = (state) => {
  
@@ -79,10 +67,6 @@ let mapStateToProps = (state) => {
     }
 
 }
-
-
-
-
 
 export default connect(mapStateToProps)(Job)
 

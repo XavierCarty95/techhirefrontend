@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Talent from '../talent/Talent'
  
-
-
 const TalentContainer = ({talent}) =>  {
     
     let arrayOfComponents = talent.map((user) => {

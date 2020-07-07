@@ -32,7 +32,7 @@ class Register extends Component {
     render() {
         return (
             <div className ="ui center aligned">
-                <h1 className ="center-align"> Sign In</h1>
+                <h1 className ="center-align">Register</h1>
                 <form className= "ui form" onSubmit = {this.handleSubmit}>
                 <div class="two fields">
                 <div className="field">
@@ -45,8 +45,6 @@ class Register extends Component {
                 <label htmlFor="last_name">
                 Last Name </label>
                     <input style={{width: "500px"}} type = "text" className="input-width" placeholder="enter your last name"  name="last_name" value = {this.state.last_name} onChange={this.handleInput} />
-                
-                
                 </div>
                 </div>
                 <div class="two fields">

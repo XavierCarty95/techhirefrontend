@@ -46,27 +46,26 @@ class App extends Component {
 
    }
 
-   fetch("http://localhost:4000/users")
+   fetch("https://peaceful-shelf-44568.herokuapp.com/users")
    .then(r => r.json())
    .then(response => {
       this.props.displayAllUsers(response)
    })
 
-   fetch("http://localhost:4000/companies")
+   fetch("https://peaceful-shelf-44568.herokuapp.com/companies")
    .then(r => r.json())
    .then(response => {
-     console.log(response)
       this.props.allCompanies(response)
    })
 
 
-   fetch("http://localhost:4000/jobs")
+   fetch("https://peaceful-shelf-44568.herokuapp.com/jobs")
   .then(r => r.json())
   .then(response => {
       this.props.AllJobs(response)
    })
 
-   fetch("http://localhost:4000/applications")
+   fetch("https://peaceful-shelf-44568.herokuapp.com/applications")
   .then(r => r.json())
   .then(response => {
       this.props.allApplications(response)
@@ -129,7 +128,7 @@ handleDelete = (id) => {
     .then(r => r.json())
     .then(response => {
       
-      console.log(response)
+     
       localStorage.clear("token")
        this.props.logOutUser()
        this.props.deleteUser(response)
@@ -173,11 +172,7 @@ handleApplication = (applicationInfo) => {
   })
     .then(r => r.json())
     .then(response => {
-      console.log(response)
         this.props.addApplication(response)
-        
-        
-
     })
 }
 
@@ -205,14 +200,10 @@ renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
        return <Login message={this.state.message} handleLogin={this.handleLoginSubmit} />
     } else if (routerProps.location.pathname === "/register") {
-      return <Register
-        
-        handleRegister={this.handleRegisterSubmit}
+      return <Register handleRegister={this.handleRegisterSubmit}
       />
     }
-
-
- }
+}
 
 
  renderProfile = (routerProps) => {
@@ -234,27 +225,23 @@ renderForm = (routerProps) => {
  logout = () => {
     localStorage.clear("token")
     this.props.logOutUser()
-   
-
-}
+  }
 
 renderJob = (routerProps) => {
   if(routerProps.location.pathname === "/jobs"){
     return   (<div><div className ="container" style={{marginTop: "10px"}}><JobFilter theSearchParameter= {this.state.theSearchParameter} handleTheSearchParameter={this.handleTheSearchParamater}/></div><JobContainer jobs={this.decideWhichArrayToRender()} handleApplication={this.handleApplication}/></div>)
   }
-
- }
+}
  handleSearchTerm = (termFromChild) => {
   this.setState({
     searchTerm: termFromChild
   })
 }
 
- renderCompany = (routerProps) => {
+renderCompany = (routerProps) => {
   if(routerProps.location.pathname === "/companies"){
     return  (<div><SearchForm placeholder="search by company name"  searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><CompanyContainer companies ={this.filterCompanies()} /></div>)
   }
-
 }
 
 renderAddCompany = (routerProps) => {
@@ -276,16 +263,14 @@ renderHome = (routerProps) => {
 }
 
 handleTheSearchParamater = (theSearchTerm) => {
-
-  this.setState({
+ this.setState({
     ...this.state,
     theSearchParameter: theSearchTerm
   })
 }
 decideWhichArrayToRender = () => {
- 
+  
   let {theSearchParameter} = this.state
-  console.log(theSearchParameter)
   let arrayToReturn = this.props.jobs
   
   if (theSearchParameter === "All") {
@@ -309,15 +294,11 @@ decideWhichArrayToRender = () => {
       return job.work_type === "Remote"
     })
   }
-
-  return arrayToReturn
+ return arrayToReturn
 }
 
-
-
 filterCompanies = () => {
-    
-   
+  
   let companies = [...this.props.companies]
   if(this.state.searchTerm === ""){
     return companies 
@@ -326,15 +307,12 @@ filterCompanies = () => {
       return val.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     
     })
-
   }
  return companies
-
 }
 
 filterTalent = () => {
-    
-   
+  
   let talents = [...this.props.talents]
   if(this.state.searchTerm === ""){
     return talents 
@@ -350,11 +328,7 @@ filterTalent = () => {
  return talents
 
 }
-
-
-
-
-  render() {
+render() {
     return (
       <div>
        <NavBar logout={this.logout}/>
@@ -389,9 +363,6 @@ let mapStateToDispatch = {
   addApplication: addApplication,
   deleteUser: deleteUser,
   updateUser: updateUser,
-
-  
-
 }
 
 let mapStateToProps = state => {
@@ -404,6 +375,4 @@ let mapStateToProps = state => {
 }
 
 let componentWithRouterProps = withRouter(App)
-
-
 export default connect(mapStateToProps, mapStateToDispatch)(componentWithRouterProps)

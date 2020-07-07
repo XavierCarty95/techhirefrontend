@@ -43,7 +43,6 @@ let mapStateToProps = (state) => {
 
 }
 
-
 let functionThatAddsProps = connect(mapStateToProps)
 let componentThatNowHasProps = functionThatAddsProps(CompanyContainer)
 export default componentThatNowHasProps;

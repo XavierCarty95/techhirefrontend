@@ -8,9 +8,7 @@ class SearchForm extends Component {
         console.log(evt.target.value)
     
     }
-     
     render() {
-        console.log(this.props)
         return (
             <div>
                 
@@ -25,6 +23,5 @@ class SearchForm extends Component {
         )
     }
 }
-
 
 export default (SearchForm)
