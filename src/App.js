@@ -31,7 +31,7 @@ class App extends Component {
 
   componentDidMount() {
    if(localStorage.token){
-      fetch("http://localhost:4000/users/stay_logged_in",{
+      fetch("https://peaceful-shelf-44568.herokuapp.com/users/stay_logged_in",{
         headers: {
           "Authorization": localStorage.token
         }
@@ -74,7 +74,7 @@ class App extends Component {
    
 }
 handleLoginSubmit = (user) => {
-  fetch("http://localhost:4000/users/login", {
+  fetch("https://peaceful-shelf-44568.herokuapp.com/users/login", {
    method: "POST",
    headers: {
      "Content-type": "application/json"
@@ -102,7 +102,7 @@ handleLoginSubmit = (user) => {
  }
 
  handleRegisterSubmit = (userInfo) => {
-  fetch("http://localhost:4000/users", {
+  fetch("https://peaceful-shelf-44568.herokuapp.com/users", {
     method: "POST",
     headers: {
       "content-type": "application/json"
@@ -122,7 +122,7 @@ handleLoginSubmit = (user) => {
 
 
 handleDelete = (id) => {
-  fetch(`http://localhost:4000/users/${id}`, {
+  fetch(`https://peaceful-shelf-44568.herokuapp.com/users/${id}`, {
     method: "DELETE",
    })
     .then(r => r.json())
@@ -146,7 +146,7 @@ reload = () =>
 };
 
 handleUpdate = (id , userInfo ) => {
-  fetch(`http://localhost:4000/users/${id}`, {
+  fetch(`https://peaceful-shelf-44568.herokuapp.com/${id}`, {
     method: "PATCH",
     headers: {
       "content-type": "application/json"
@@ -163,7 +163,7 @@ handleUpdate = (id , userInfo ) => {
 }
 
 handleApplication = (applicationInfo) => {
-  fetch("http://localhost:4000/applications", {
+  fetch("https://peaceful-shelf-44568.herokuapp.com/applications", {
     method: "POST",
     headers: {
       "content-type": "application/json"
@@ -177,7 +177,7 @@ handleApplication = (applicationInfo) => {
 }
 
 handleCompany = (companyInfo) => {
-  fetch("http://localhost:4000/companies", {
+  fetch("https://peaceful-shelf-44568.herokuapp.com/companies", {
     method: "POST",
     headers: {
       "content-type": "application/json"
