@@ -257,7 +257,7 @@ renderUpdateProfile = (routerProps) => {
 }
 
 renderHome = (routerProps) => {
-  if(routerProps.location.pathname === "/"){
+  if(routerProps.location.pathname === "/" || routerProps.location.pathname === "/techhirefrontend"){
     return <div><SearchForm placeholder= "Search by company name" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /> <Footer /></div> 
   }
 }
