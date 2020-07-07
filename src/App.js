@@ -257,7 +257,7 @@ renderUpdateProfile = (routerProps) => {
 }
 
 renderHome = (routerProps) => {
-  if(routerProps.location.pathname === "/" || routerProps.location.pathname === "/techhirefrontend"){
+  if(routerProps.location.pathname === "/" || routerProps.location.pathname === "/techhirefrontend/"){
     return <div><SearchForm placeholder= "Search by company name" searchTerm = {this.state.searchTerm} handleSearchTerm={this.handleSearchTerm}/><Home searchTerm = {this.state.searchTerm} /> <Footer /></div> 
   }
 }
@@ -342,7 +342,7 @@ render() {
          <Route path="/addCompany" render={this.renderAddCompany}/>
          <Route path="/updateProfile" render={this.renderUpdateProfile}/>
          <Route path="/" render={this.renderHome}/>
-         <Route path="/techhirefrontend" render={this.renderHome}/>
+         <Route path="/techhirefrontend/" render={this.renderHome}/>
        
        </Switch>
        <SideNav />
