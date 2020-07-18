@@ -146,7 +146,7 @@ reload = () =>
 };
 
 handleUpdate = (id , userInfo ) => {
-  fetch(`https://peaceful-shelf-44568.herokuapp.com/${id}`, {
+  fetch(`https://peaceful-shelf-44568.herokuapp.com/users/${id}`, {
     method: "PATCH",
     headers: {
       "content-type": "application/json"
